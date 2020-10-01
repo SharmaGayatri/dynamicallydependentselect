@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <title>Practical - exercise</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<script type="text/javascript">
+        function myJSONobj(){
+
+        var JSONObject={
+            
+            "gender" : gender,
+            "status" : status
+        };
+        function populateSelect() {
+        var sel = document.getElementsByName('gender');
+             var gender = [
+                 {"id":1,
+                   "gender":"Male"},
+                   {"id":2,
+                   "gender":"Female"},
+                   {"id":3,
+                   "gender":"Undisclosed"}];
+            
+           for(var i=0;i<sel.length;i++)
+               sel.innerHTML = sel.innerHTML +  '<option value="' + gender[i]['iD'] + '">' + gender[i]['gender'] + '</option>';
+
+        }
+
+        var radios = document.getElementsByName('status');
+             var status = '';
+            for(var i=0;i<radios.length;i++)
+{
+             if(radios[i].checked)
+                status = radios[i].value;
+}
+
+
+        var jsonstr=JSON.stringify(JSONObject);
+        alert(jsonstr);
+
+        var jobjson=JSON.parse(jsonstr);
+        alert(jobjson.gender);
+       
+        var jobjson=JSON.parse(jsonstr);
+        alert(jobjson.status);
+        }
+        function show(ele) {
+        // GET THE SELECTED VALUE FROM <select> ELEMENT AND SHOW IT.
+        var msg = document.getElementById('msg');
+        msg.innerHTML = 'Selected Gender: <b>' + ele.options[ele.selectedIndex].text + '</b> </br>' +
+            'ID: <b>' + sel.value + '</b>';
+    }
+    </script>
+    </head>
+    <body>
+       
+    <form method="post" action="display.java">
+       
+        
+      
+        <div class="form-group col-md-4">
+           
+            <label for="inputState">Gender</label>
+            <select id="sel"  onclick="populateSelect()" onchange="show(this)">
+                <option value="">-- Select Gender --</option>
+            </select>
+            <p id="msg"></p>
+
+
+          <p> Please select your gender:
+            <br/>
+            <input type="radio" id="gender_M" name="gender" value="Male" /> Male
+            <input type="radio" id="gender_F" name="gender" value="Female" required="required" /> Female
+            </p>
+            <input type="radio" id="gender_U" name="gender" value="Undefined" required="required" /> Undefined
+        </p>
+        <p> Please select your status:
+            <br/>
+            <input type="radio" id="status_M" name="status" value="Married" /> Married
+            <input type="radio" id="status_D" name="status" value="Divorced" required="required" /> Divorced
+            </p>
+            <input type="radio" id="status_S" name="status" value="Single" required="required" /> Single
+           
+            <input type="radio" id="status_W" name="status" value="Widow" required="required" /> Widow
+        </p>
+            <input onClick="myJSONobj();" type="button" id="theSubmit" name="theSubmit" value="Submit"/>
+    </form>
+
+    
+    </body>
+</html>
